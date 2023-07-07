@@ -1,5 +1,4 @@
 <?php include 'conn.php'; 
-
     $ussername = $_POST['ussername'];
     $password = $_POST['password'];
 
