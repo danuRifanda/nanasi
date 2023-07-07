@@ -8,6 +8,5 @@ $jumlah_harga = $makanan * $kuantitas_makanan + $minuman * $kuantitas_minuman;
 
 $sql = mysqli_query($koneksi, "INSERT INTO pemesanan(nama_pemesan,jumlah_harga) VALUES('$nama_pemesan','$jumlah_harga')");
 
-echo "200 OK";
 
-// header('location: admin.php');
+header('location: index.php');

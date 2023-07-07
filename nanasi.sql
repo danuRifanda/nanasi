@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 07, 2023 at 11:18 AM
+-- Generation Time: Jul 07, 2023 at 05:17 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -31,8 +31,16 @@ CREATE TABLE `pemesanan` (
   `id_pemesanan` int(11) NOT NULL,
   `nama_pemesan` varchar(50) NOT NULL,
   `jumlah_harga` int(11) NOT NULL,
-  `approve` tinyint(1) DEFAULT NULL
+  `isApproved` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `pemesanan`
+--
+
+INSERT INTO `pemesanan` (`id_pemesanan`, `nama_pemesan`, `jumlah_harga`, `isApproved`) VALUES
+(1, 'asfsa', 28000, 0),
+(2, 'asfsa', 28000, 0);
 
 -- --------------------------------------------------------
 
@@ -127,7 +135,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `pemesanan`
 --
 ALTER TABLE `pemesanan`
-  MODIFY `id_pemesanan` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pemesanan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `penjualan`
