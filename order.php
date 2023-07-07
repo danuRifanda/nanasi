@@ -1,3 +1,10 @@
+<?php
+include "conn.php";
+$queryMakanan = mysqli_query($koneksi, "SELECT * from produk WHERE jenis_produk = 'makanan'");
+$queryMinuman = mysqli_query($koneksi, "SELECT * from produk WHERE jenis_produk = 'minuman'");
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -116,9 +123,54 @@
     </section>
 
     <section class="inner-page">
-      <div class="container">
-        <h1>buat pesen produk disini</h1>
-      </div>
+      <form method="POST" action="order-logic.php">
+        <div class="container">
+          <div class="mb-3">
+            <label for="nama_pemesan" class="form-label">Nama Pemesan</label>
+            <div class="input-group">
+              <input type="text" class="form-control" id="nama_pemesan" name="nama_pemesan" placeholder="John Doe" aria-describedby="basic-addon3 basic-addon4">
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <div class="col">
+              <label for="makanan" class="form-label">Makanan</label>
+              <select class="form-select" id="makanan" name="makanan">
+                <option selected value="">-- Pilih Makanan --</option>
+                <?php
+                while ($makanan = mysqli_fetch_assoc($queryMakanan)) :
+                ?>
+                  <option value="<?= $makanan['harga_produk'] ?>"><?= $makanan['nama_produk'] ?></option>
+                <?php endwhile; ?>
+              </select>
+            </div>
+            <div class="col">
+              <label class="form-label" for="kuantitas_makanan">Kuantitas</label>
+              <input type="number" min="0" id="kuantitas_makanan" name="kuantitas_makanan" class="form-control" />
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <div class="col">
+              <label for="minuman" class="form-label">Minuman</label>
+              <select class="form-select" id="minuman" name="minuman">
+                <option selected value="">-- Pilih Minuman --</option>
+                <?php
+                while ($minuman = mysqli_fetch_assoc($queryMinuman)) :
+                ?>
+                  <option value="<?= $minuman['harga_produk'] ?>"><?= $minuman['nama_produk'] ?></option>
+                <?php endwhile; ?>
+              </select>
+            </div>
+            <div class="col">
+              <label class="form-label" for="kuantitas_minuman">Kuantitas</label>
+              <input type="number" min="0" id="kuantitas_minuman" name="kuantitas_minuman" class="form-control" />
+            </div>
+          </div>
+          <input type="submit" value="Order" class="btn btn-outline-light btn-lg px-5">
+        </div>
+
+      </form>
     </section>
 
   </main><!-- End #main -->
