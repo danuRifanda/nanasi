@@ -62,7 +62,6 @@
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
-      <a href="admin.php" class="book-a-table-btn scrollto d-none d-lg-flex">Admin</a>
 
     </div>
   </header><!-- End Header -->
